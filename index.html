@@ -2,47 +2,52 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Weather Dashboard</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-dark font-white">
         <h1>Weather Dashboard</h1>
     </nav>
-  <button cityBtn ="city">City</button>
-  
-  <div id="gifs-appear-here">
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $("button").on("click", function() {
-      var cityName = $(this).attr("cityBtn");
-      var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q= " + city + " &appid=472a07ec988fe068670c8e23411bee88";
-      //api key = 472a07ec988fe068670c8e23411bee88
-        console.log(queryURL);
-      //ajax call   
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-        
-        console.log(response);
-          var results = response.data;
-       
-             $(".city").html("<h1>" + response.name + "Weather Details</h1>");
-             $(".wind").text("Wind speed: " + response.wind.speed);
-             $(".humidity").text("Humidity: " + response.main.humidity);
-        
-     
-        
-         });
+    <button cityName="London">London</button>
 
-      
-    });
-  </script>
+    <div id="gifs-appear-here">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+       
+            var city = $(this).attr("cityName");
+            var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=472a07ec988fe068670c8e23411bee88";
+            //api key = 472a07ec988fe068670c8e23411bee88
+            console.log(queryURL);
+            $("button").on("click", function () {
+            //ajax call   
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function(response) {
+
+                console.log(response);
+
+                var results = response.data;
+                for (var i = 0; i < results.length; i++) {
+
+                    var cityName = $(".city").html("<h1>" + response.name + "Weather Details</h1>");
+                    var windSpeed = $(".wind").text("Wind speed: " + response.wind.speed);
+                    var humidity = $(".humidity").text("Humidity: " + response.main.humidity);
+
+
+
+                };
+
+
+            });
+        });
+    </script>
 </body>
 
 </html>
