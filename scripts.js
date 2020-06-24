@@ -9,12 +9,12 @@ var windSpeed = $("#windSpeed");
 var uv = $("#uvIndex");
 
 var apiKey = "472a07ec988fe068670c8e23411bee88";
-//click on button will read city name
 
 //setting api call
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
 console.log(queryURL);
-$("#button").on("click", function () {
+//when button clicked, city name typed by user is read
+$("#submitBtn").on("click", function () {
     console.log("element clicked");
     
     //ajax call   
