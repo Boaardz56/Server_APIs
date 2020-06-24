@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark" id="nav_bar">
+    <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1 w-100 text-center">Weather Dashboard</span>
     </nav>
     <div class="container">
@@ -19,9 +19,9 @@
             <div class="col-4 bg-light">
                 <p class="search-header my-1">Search for a city:</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="valueInput" placeholder="Enter a city">
+                    <input type="text" class="cityInput" placeholder="Enter a city">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" id="search-button">
+                        <button class="btn btn-primary" type="button" id="submitBtn">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="col-12 border border-dark m-3 rounded">
                         <div class="row">
                             <div class="col-12">
-                                <span id="city-name" class="city-name align-middle"></span>
+                                <span id="cityName" class="city-name align-middle"></span>
                                 <img id="current-pic" src="" alt="">
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <p id="wind-speed">Wind Speed:</p>
+                                <p id="windSpeed">Wind Speed:</p>
                             </div>
                         </div>
                         <div class="row">
@@ -73,12 +73,6 @@
             </div>
         </div>
     </div>
-    </div>
-
-    <div class="display">
-        <h1 class="name"></h1>
-        <p class="description"></p>
-        <p class="temp"></p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="scripts.js"></script>

@@ -8,11 +8,7 @@ body{
     font-family: Arial, Helvetica, sans-serif
 }
 
-#nav_bar{
-    color: white;
-    text-align: justify;
-    padding: auto;
-}
+
 
 input{
     padding: 4px;
@@ -24,12 +20,3 @@ button {
     float:left;
 }
 
-#list{
-    float:center;
-
-}
-
-#cityCard{
-    margin: 0;
-   
-}

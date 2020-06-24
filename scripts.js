@@ -1,17 +1,31 @@
 
 //setting variables
-var inputValue = $(".weatherInput");
-var name = $(".name");
-var description = $(".description");
-var temp = $(".temp");
-//api key = 472a07ec988fe068670c8e23411bee88
+var inputName = $(".cityInput");
+var submitBtn = $("#button");
+var name = $("#cityName");
+var temp = $("#temp");
+var humidity = $("#humidity");
+var windSpeed = $("#windSpeed");
+var uv = $("#uvIndex");
 
+var apiKey = "472a07ec988fe068670c8e23411bee88";
+//click on button will read city name
 
 //setting api call
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=london&appid=472a07ec988fe068670c8e23411bee88";
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+console.log(queryURL);
+$("#button").on("click", function () {
+    console.log("element clicked");
+    
+    //ajax call   
+    $.ajax({
+        url: queryURL,
+        type: "GET",
+        dataType: "json"
+    }).then(function(response) {
+        console.log(response);
 
-$.getJSON(queryURL, weatherCallback);
-
-function weatherCallback(weatherData) {
-    console.log(weatherData);
-}
+    });
+        
+   
+});
