@@ -3,6 +3,7 @@
 var inputName = $(".cityInput");
 var submitBtn = $("#button");
 var name = $("#cityName");
+var city = $("#current-pic");
 var temp = $("#temp");
 var humidity = $("#humidity");
 var windSpeed = $("#windSpeed");
@@ -16,10 +17,11 @@ $("#submitBtn").on("click", function () {
     console.log("element clicked");     
     var city = inputName.val();  
     getWeather(city);
+    getForecast(city);
     
 });
 
-
+//adding weather call in
 function getWeather(city) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
     console.log(queryURL);
@@ -34,8 +36,9 @@ function getWeather(city) {
 
 }
 
-function getWeather(city) {
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+//adding forecast in
+function getForecast(city) {
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
     console.log(queryURL);
     //ajax call   
     $.ajax({
@@ -47,3 +50,4 @@ function getWeather(city) {
     });
 
 }
+
