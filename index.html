@@ -6,48 +6,82 @@
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark font-white">
-        <h1>Weather Dashboard</h1>
+    <nav class="navbar navbar-dark bg-dark" id="nav_bar">
+        <span class="navbar-brand mb-0 h1 w-100 text-center">Weather Dashboard</span>
     </nav>
-    <button cityName="London">London</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-4 bg-light">
+                <p class="search-header my-1">Search for a city:</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="valueInput" placeholder="Enter a city">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="search-button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="row mr-0">
+                    <div class="col-12 border border-dark m-3 rounded">
+                        <div class="row">
+                            <div class="col-12">
+                                <span id="city-name" class="city-name align-middle"></span>
+                                <img id="current-pic" src="" alt="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p id="temp">Temperature:</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p id="humidity">Humidity:</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p id="wind-speed">Wind Speed:</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex">
+                                <p id="uvIndex">UV Index:<span class="badge badge-danger">#</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h3>5-Day Forecast:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 
-    <div id="gifs-appear-here">
+    <div class="display">
+        <h1 class="name"></h1>
+        <p class="description"></p>
+        <p class="temp"></p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
-       
-            var city = $(this).attr("cityName");
-            var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=472a07ec988fe068670c8e23411bee88";
-            //api key = 472a07ec988fe068670c8e23411bee88
-            console.log(queryURL);
-            $("button").on("click", function () {
-            //ajax call   
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function(response) {
-
-                console.log(response);
-
-                var results = response.data;
-                for (var i = 0; i < results.length; i++) {
-
-                    var cityName = $(".city").html("<h1>" + response.name + "Weather Details</h1>");
-                    var windSpeed = $(".wind").text("Wind speed: " + response.wind.speed);
-                    var humidity = $(".humidity").text("Humidity: " + response.main.humidity);
-
-
-
-                };
-
-
-            });
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
