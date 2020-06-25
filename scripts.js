@@ -73,12 +73,10 @@ function getWeather(city) {
                     uv.text(response[0].value);
                     uv.append();
                 });
-        //get 5 day forcast
-            
-
     });
 }
 
+//get 5 day forcast            
 function getForecast(city) {
     var forecastqueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
    //ajax call   
@@ -100,7 +98,7 @@ function getForecast(city) {
                var forecastMonth = forecastDate.getMonth();
                var forecastYear = forecastDate.getFullYear();
                var forecastTotal = $("<p>");
-               forecastTotal.attr("class", "mt-3 mb-0 rounded forecast-date");
+               forecastTotal.attr("class", "mt-3 mb-2 rounded forecast-date");
                forecastTotal.text(forecastMonth + "/" + forecastDay + "/" + forecastYear);
                forecastData.append(forecastTotal);
             //adding weather icon for card
@@ -139,7 +137,7 @@ function getSearchHistory() {
         history.append(historyEl); 
     }
 }
-
+//call for searchHistory
 getSearchHistory();
 if (searchHistory.length > 0) {
     getWeather(searchHistory[searchHistory.length - 1]);
