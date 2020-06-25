@@ -6,9 +6,11 @@ var temp = $("#temp");
 var humidity = $("#humidity");
 var windSpeed = $("#windSpeed");
 var uv = $("#uvIndex");
+var history = $("history");
+var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+// console.log(searchHistory);
 
 var apiKey = "472a07ec988fe068670c8e23411bee88";
-
 
 //when button clicked, city name typed by user is read
 $("#submitBtn").on("click", function () {
@@ -16,8 +18,13 @@ $("#submitBtn").on("click", function () {
     var city = inputName.val();  
     getWeather(city);
     getForecast(city);
-    
+    //add search history
+    searchHistory = [];
+    searchHistory.push(city);
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+    getSearchHistory();
 });
+
 
 //adding weather call in
 function getWeather(city) {
@@ -91,7 +98,7 @@ function getForecast(city) {
                 const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
                 const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d)
                 const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d)
-                var forecastTotal = $("#box1");
+                var forecastTotal = $("#box");
                 forecastTotal.attr("class", "mt-3 mb-3 rounded forecast-date");
                 forecastTotal.append(`(${da}-${mo}-${ye})`);
                 // forecastTotal[i].append(forecastTotal);
@@ -119,9 +126,6 @@ function getForecast(city) {
                 cardHumidity.text("Humidity: " + response.list[forecastArray].main.humidity + "%");
                 forecastData.append(cardHumidity);
            }
-       
-
-
    });
 }
 
@@ -129,8 +133,27 @@ function getForecast(city) {
 function tempChange(K) {
     return Math.floor((K - 273.15) *1.8 +32);
 }
-// //adding forecast in
+// search history addon
+function getSearchHistory() {
+    history.text = "";
+    for (var i=0; i<searchHistory.length;i++) {
+        var historyEl = $("<input>");
+        historyEl.attr("type", "text");
+        historyEl.attr("readonly", true);
+        historyEl.attr("class", "form-control d-block bg-white");
+        historyEl.attr("value", searchHistory[i]);
+        $(historyEl).on("click", function () {
+            getWeather(historyEl.val());
 
+    })
+        history.append(historyEl); 
+    }
+}
+
+getSearchHistory();
+if (searchHistory.length > 0) {
+    getWeather(searchHistory[searchHistory.length -1]);
+}
 
 
 
