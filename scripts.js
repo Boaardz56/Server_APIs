@@ -80,15 +80,44 @@ function getForecast(city) {
        type: "GET",
        dataType: "json"
    }).then(function(response) {
+       console.log(response);
        var forecastData = $(".forecast");
        //create for loop
-           for (i=0; i<forecastData.length; i++) {
+           for (var i=0; i<forecastData.length;i++) {
                forecastData[i].text = "";
-               var forecastIndex = i*8 + 4;
-               console.log(forecastIndex);
+               var forecastArray = i*8 + 4;
+               console.log(forecastArray);
+                const d = new Date('2010-08-05')
+                const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
+                const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d)
+                const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d)
+                var forecastTotal = $("#box1");
+                forecastTotal.attr("class", "mt-3 mb-3 rounded forecast-date");
+                forecastTotal.append(`(${da}-${mo}-${ye})`);
+                // forecastTotal[i].append(forecastTotal);
+                console.log(forecastTotal);
+                //date data
+            //    var forecastDate = new Date(response.data.list[forecastArray].dt * 1000);
+            //    var forecastDay = forecastDate.getDate();
+            //    var forecastMonth = forecastDate.getMonth() + 1;
+            //    var forecastYear = forecastDate.getFullYear();
+            //    var forecastTotal = $("<p>");
+            //    forecastTotal.attr("class", "mt-3 mb-0 rounded forecast-date");
+            //    forecastTotal.text(forecastMonth + "/" + forecastDay + "/" + forecastYear);
+            //    forecastData[i].append(forecastTotal);
                
-
-
+            //adding weather icon for card
+                var cardWeatherIcon = $("<img>");
+                 cardWeatherIcon.attr('src', 'https://openweathermap.org/img/wn/'+ response.list[forecastArray].weather[0].icon +'.png')
+                 forecastData.append(cardWeatherIcon);
+            //adding forecast temp for card
+                var cardTemp = $("<p>");
+                cardTemp.text(tempChange(response.list[forecastArray].main.temp) + '°F');
+                forecastData.append(cardTemp);
+            //adding forecast humidity for card
+                var cardHumidity = $("<p>");
+                cardHumidity.text("Humidity: " + response.list[forecastArray].main.humidity + "%");
+                forecastData.append(cardHumidity);
            }
        
 
