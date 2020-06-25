@@ -20,3 +20,19 @@ button {
     float:left;
 }
 
+#Search {
+    font-weight: bold;
+}
+
+#cityName {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.forecast {
+    margin-bottom: 10px;
+}
+
+.navbar {
+    font-size: 30px;
+}

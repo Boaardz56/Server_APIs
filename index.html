@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-4 bg-light">
-                <p class="search-header my-1">Search for a city:</p>
+                <p class="search-header my-1" id="Search">Search for a city:</p>
                 <div class="input-group mb-3">
                     <input type="text" class="cityInput" placeholder="Enter a city">
                     <div class="input-group-append">
@@ -26,7 +26,9 @@
                         </button>
                     </div>
                 </div>
-                <form id="history"></form>
+                <ul class="list-group">
+                    <li class="list-group-item" id="history"></li>
+                  </ul>
             </div>
             <div class="col-8">
                 <div class="row mr-0">
@@ -60,15 +62,15 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <h3>5-Day Forecast:</h3>
+                        <h5>5-Day Forecast:</h5>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded" id="box"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded" id="box"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded" id="box"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded" id="box"></div>
-                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded" id="box"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
                 </div>
             </div>
         </div>

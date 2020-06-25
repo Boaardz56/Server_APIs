@@ -6,7 +6,7 @@ var temp = $("#temp");
 var humidity = $("#humidity");
 var windSpeed = $("#windSpeed");
 var uv = $("#uvIndex");
-var history = $("history");
+var history = $("#history");
 var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 // console.log(searchHistory);
 
@@ -90,29 +90,19 @@ function getForecast(city) {
        console.log(response);
        var forecastData = $(".forecast");
        //create for loop
-           for (var i=0; i<forecastData.length;i++) {
-               forecastData[i].text = "";
-               var forecastArray = i*8 + 4;
+           for (var i=0; i<forecastData.length; i++) {
+               forecastData[i].innerHTML = "";
+               var forecastArray = i*8 +4;
                console.log(forecastArray);
-                const d = new Date('2010-08-05')
-                const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d)
-                const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d)
-                const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d)
-                var forecastTotal = $("#box");
-                forecastTotal.attr("class", "mt-3 mb-3 rounded forecast-date");
-                forecastTotal.append(`(${da}-${mo}-${ye})`);
-                // forecastTotal[i].append(forecastTotal);
-                console.log(forecastTotal);
                 //date data
-            //    var forecastDate = new Date(response.data.list[forecastArray].dt * 1000);
-            //    var forecastDay = forecastDate.getDate();
-            //    var forecastMonth = forecastDate.getMonth() + 1;
-            //    var forecastYear = forecastDate.getFullYear();
-            //    var forecastTotal = $("<p>");
-            //    forecastTotal.attr("class", "mt-3 mb-0 rounded forecast-date");
-            //    forecastTotal.text(forecastMonth + "/" + forecastDay + "/" + forecastYear);
-            //    forecastData[i].append(forecastTotal);
-               
+               var forecastDate = new Date(response.list[forecastArray].dt * 1000);
+               var forecastDay = forecastDate.getDate() + 1;
+               var forecastMonth = forecastDate.getMonth();
+               var forecastYear = forecastDate.getFullYear();
+               var forecastTotal = $("<p>");
+               forecastTotal.attr("class", "mt-3 mb-0 rounded forecast-date");
+               forecastTotal.text(forecastMonth + "/" + forecastDay + "/" + forecastYear);
+               forecastData.append(forecastTotal);
             //adding weather icon for card
                 var cardWeatherIcon = $("<img>");
                  cardWeatherIcon.attr('src', 'https://openweathermap.org/img/wn/'+ response.list[forecastArray].weather[0].icon +'.png')
@@ -152,7 +142,7 @@ function getSearchHistory() {
 
 getSearchHistory();
 if (searchHistory.length > 0) {
-    getWeather(searchHistory[searchHistory.length -1]);
+    getWeather(searchHistory[searchHistory.length - 1]);
 }
 
 
