@@ -4,7 +4,7 @@
 
 A weather website was created to allow a user to check the outlook for up to five days in order to plan their trip. This website was pulling all of the weather information from OpenWeather API. The resulting page would look as shown below: 
 
-![weather dashboard demo](./assets/06-server-side-apis-homework-demo.png)
+![weather dashboard demo](https://raw.githubusercontent.com/Boaardz56/Server_APIs/master/instructions/assets/06-server-side-apis-homework-demo.png)
 
 ## Working with APIs
 
